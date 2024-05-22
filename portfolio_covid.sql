@@ -1,7 +1,7 @@
 USE sql_covid;
 
 
--- DATE DATE RANGE
+-- DATE RANGE
 SELECT min(date) AS data_start_date, max(date) AS data_end_date
 FROM covid_deaths;
 
