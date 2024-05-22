@@ -46,7 +46,7 @@ SELECT location,
     MAX(CAST(total_deaths AS unsigned)) current_death_count,
     (MAX(CAST(total_deaths AS unsigned))/population)*100 AS max_death_percentage
 FROM covid_deaths
-WHERE continent <> ''
+WHERE continent NOT NULL
 GROUP BY location, population
 ORDER BY max_deaths DESC;
 
@@ -57,7 +57,7 @@ SELECT
 FROM
     covid_deaths
 WHERE
-    continent = '' AND location <> ''
+    continent IS NOT NULL
 GROUP BY location , continent
 ORDER BY current_death_count DESC;
 
@@ -71,7 +71,7 @@ SELECT date,
     SUM(CAST(total_deaths AS UNSIGNED)) AS total_death_per_day,
     (SUM(CAST(new_deaths AS UNSIGNED))/SUM(new_cases))*100 AS death_rate_per_world_new_case
 FROM covid_deaths
-WHERE continent <> ''
+WHERE continent NOT NULL
 GROUP BY date
 ORDER BY date;
 
